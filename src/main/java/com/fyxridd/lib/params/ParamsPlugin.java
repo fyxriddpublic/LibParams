@@ -1,5 +1,7 @@
 package com.fyxridd.lib.params;
 
+import org.bukkit.Bukkit;
+
 import com.fyxridd.lib.config.api.ConfigApi;
 import com.fyxridd.lib.core.api.plugin.SimplePlugin;
 import com.fyxridd.lib.params.manager.ParamsManager;
@@ -11,6 +13,11 @@ public class ParamsPlugin extends SimplePlugin{
 
     @Override
     public void onEnable() {
+        Bukkit.getScheduler().runTaskAsynchronously(this, new Runnable(){
+            public void run() {
+                
+            }
+        }).;
         instance = this;
 
         paramsManager = new ParamsManager();
