@@ -1,7 +1,10 @@
 package com.fyxridd.lib.params.getter.str;
 
 import com.fyxridd.lib.core.api.UtilApi;
+import com.fyxridd.lib.params.StringGetter;
+import com.fyxridd.lib.params.Util;
 import com.fyxridd.lib.params.api.*;
+import com.fyxridd.lib.params.impl.SessionImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.List;
 /**
  * 从获取对象中获取值
  */
-public class StringGetterA extends StringGetter{
+public class StringGetterA extends StringGetter {
     public static final String PREFIX = "a";
 
     //获取对象名
@@ -45,7 +48,7 @@ public class StringGetterA extends StringGetter{
                 }else {//ss.length == 2
                     property = ss[1].charAt(ss[1].length()-1) != ')';
                     proName = ss[1].substring(0, ss[1].indexOf('('));
-                    proMethodParams = ParamsApi.getMethodParams(ss[1].substring(proName.length()));
+                    proMethodParams = Util.getMethodParams(ss[1].substring(proName.length()));
                     proMethodClasses = new Class<?>[proMethodParams.size()];
                     for (int index=0;index<proMethodParams.size();index++) proMethodClasses[index] = String.class;
                 }
@@ -58,7 +61,7 @@ public class StringGetterA extends StringGetter{
     @Override
     public String get(Session session) {
         try {
-            Object o = session.getObj(getObjName);
+            Object o = ((SessionImpl)session).getObj(getObjName);
             if (o != null) {
                 Object result;
                 if (property) {
@@ -74,21 +77,5 @@ public class StringGetterA extends StringGetter{
             e.printStackTrace();
         }
         return null;
-    }
-
-    public boolean isProperty() {
-        return property;
-    }
-
-    public String getProName() {
-        return proName;
-    }
-
-    public List<String> getProMethodParams() {
-        return proMethodParams;
-    }
-
-    public Class<?>[] getProMethodClasses() {
-        return proMethodClasses;
     }
 }

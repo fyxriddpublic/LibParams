@@ -1,8 +1,7 @@
 package com.fyxridd.lib.params.manager;
 
-import com.fyxridd.lib.params.api.StringGetter;
-import com.fyxridd.lib.params.api.ObjectGetter;
-import com.fyxridd.lib.params.api.ParamsApi;
+import com.fyxridd.lib.params.StringGetter;
+import com.fyxridd.lib.params.ObjectGetter;
 import com.fyxridd.lib.params.getter.obj.ObjectGetterA;
 import com.fyxridd.lib.params.getter.str.StringGetterA;
 import com.fyxridd.lib.params.getter.str.StringGetterB;
@@ -32,7 +31,7 @@ public class ParamsManager {
     }
 
     /**
-     * @see ParamsApi#loadObjectGetter(String, String)
+     * @see com.fyxridd.lib.params.Util#loadObjectGetter(String, String)
      */
     public ObjectGetter loadObjectGetter(String objName, String objValue) throws Exception{
         for (Map.Entry<String, Class<? extends ObjectGetter>> entry:getObjects.entrySet()) {
@@ -42,7 +41,7 @@ public class ParamsManager {
     }
 
     /**
-     * @see com.fyxridd.lib.params.api.ParamsApi#loadStringGetter(String, String)
+     * @see com.fyxridd.lib.params.Util#loadStringGetter(String, String)
      */
     public StringGetter loadStringGetter(String strName, String strValue) throws Exception{
         for (Map.Entry<String, Class<? extends StringGetter>> entry:getStrings.entrySet()) {

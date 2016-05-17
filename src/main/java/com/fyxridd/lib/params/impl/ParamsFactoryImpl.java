@@ -1,5 +1,7 @@
 package com.fyxridd.lib.params.impl;
 
+import com.fyxridd.lib.params.ObjectGetter;
+import com.fyxridd.lib.params.StringGetter;
 import com.fyxridd.lib.params.api.*;
 
 import java.util.Map;
@@ -25,6 +27,6 @@ public class ParamsFactoryImpl implements ParamsFactory{
 
     @Override
     public Session openSession(Map<String, Object> objDefaults, Map<String, String> strDefaults, String[] extra) {
-        return new Session(this, objDefaults, strDefaults, extra);
+        return new SessionImpl(this, objDefaults, strDefaults, extra);
     }
 }

@@ -2,9 +2,9 @@ package com.fyxridd.lib.params.getter.str;
 
 import java.util.Set;
 
+import com.fyxridd.lib.params.Util;
 import com.fyxridd.lib.params.api.Session;
-import com.fyxridd.lib.params.api.StringGetter;
-import com.fyxridd.lib.params.api.ParamsApi;
+import com.fyxridd.lib.params.StringGetter;
 
 /**
  * 直接设置值,可包含变量
@@ -16,7 +16,7 @@ public class StringGetterB extends StringGetter{
 
     public StringGetterB(String value) throws Exception {
         super(value);
-        params = ParamsApi.getParams(value);
+        params = Util.getParams(value);
     }
 
     @Override

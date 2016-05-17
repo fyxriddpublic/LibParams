@@ -1,5 +1,8 @@
 package com.fyxridd.lib.params.api;
 
+import com.fyxridd.lib.params.ObjectGetter;
+import com.fyxridd.lib.params.StringGetter;
+
 import java.util.Map;
 
 /**

@@ -1,8 +1,8 @@
 package com.fyxridd.lib.params.getter.obj;
 
 import com.fyxridd.lib.params.ParamsPlugin;
-import com.fyxridd.lib.params.api.ObjectGetter;
-import com.fyxridd.lib.params.api.ParamsApi;
+import com.fyxridd.lib.params.Util;
+import com.fyxridd.lib.params.ObjectGetter;
 import com.fyxridd.lib.params.api.Session;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class ObjectGetterA extends ObjectGetter{
 
             {
                 getName = ss[1].substring(0, ss[1].indexOf('('));
-                getParams = ParamsApi.getMethodParams(ss[1].substring(getName.length()));
+                getParams = Util.getMethodParams(ss[1].substring(getName.length()));
             }
         } catch (Exception e) {
             throw new Exception("new ObjectGetterA error: "+e.getMessage(), e);
