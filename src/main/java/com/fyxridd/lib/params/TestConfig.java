@@ -9,4 +9,8 @@ public class TestConfig {
     @Path("params")
     @ConfigConvert(ParamsConverter.class)
     private ParamsFactory factory;
+
+    public ParamsFactory getFactory() {
+        return factory;
+    }
 }

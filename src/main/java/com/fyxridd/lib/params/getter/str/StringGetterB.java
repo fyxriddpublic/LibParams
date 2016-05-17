@@ -2,10 +2,9 @@ package com.fyxridd.lib.params.getter.str;
 
 import java.util.Set;
 
-import com.fyxridd.lib.params.api.ObjectGetters;
+import com.fyxridd.lib.params.api.Session;
 import com.fyxridd.lib.params.api.StringGetter;
 import com.fyxridd.lib.params.api.ParamsApi;
-import com.fyxridd.lib.params.api.StringGetters;
 
 /**
  * 直接设置值,可包含变量
@@ -21,15 +20,14 @@ public class StringGetterB extends StringGetter{
     }
 
     @Override
-    public String get(ObjectGetters objectGetters, StringGetters stringGetters, String[] extra) {
+    public String get(Session session) {
+        String result = getValue();
         if (params != null) {
-            for (String param:params) {
-                if (stringGetters.hasValue(param)) {
-                    String replace = stringGetters.get(objectGetters, param, extra);
-                    if (replace != null) value = value.replace("{"+param+"}", replace);
-                }
+            for (String strName:params) {
+                String replace = session.getStr(strName);
+                if (replace != null) result = result.replace("{"+strName+"}", replace);
             }
         }
-        return value;
+        return result;
     }
 }

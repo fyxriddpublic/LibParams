@@ -1,8 +1,7 @@
 package com.fyxridd.lib.params.getter.obj;
 
-import com.fyxridd.lib.params.api.ObjectGetters;
 import com.fyxridd.lib.params.api.ParamsApi;
-import com.fyxridd.lib.params.api.StringGetters;
+import com.fyxridd.lib.params.api.Session;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,9 +21,6 @@ public class ObjectGetterAManager {
     //插件名 获取名 获取器
     private Map<String, Map<String, Getter>> map = new HashMap<>();
 
-    /**
-     * @see ParamsApi#register(String, String, ObjectAGetter)
-     */
     public void register(String plugin, String getName, Getter getter) {
         Map<String, Getter> m = map.get(plugin);
         if (m == null) {
@@ -37,14 +33,14 @@ public class ObjectGetterAManager {
     /**
      * @return 可能为null
      */
-    public Object getValue(ObjectGetterA objectGetterA, ObjectGetters objectGetters, StringGetters stringGetters, String[] extra) {
+    public Object getValue(Session session, ObjectGetterA objectGetterA) {
         try {
             Map<String, Getter> gets = map.get(objectGetterA.getPlugin());
             if (gets != null) {
                 Getter objectAGetter = gets.get(objectGetterA.getGetName());
                 if (objectAGetter != null) {
                     String[] args = new String[objectGetterA.getGetParams().size()];
-                    for (int index=0;index<args.length;index++) args[index] = stringGetters.get(objectGetters, objectGetterA.getGetParams().get(index), extra);
+                    for (int index=0;index<args.length;index++) args[index] = session.getStr(objectGetterA.getGetParams().get(index));
                     return objectAGetter.get(args);
                 }
             }

@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParamsManager {
-    private Map<String, Class<? extends ObjectGetter>> getObjects = new HashMap<>();
-    private Map<String, Class<? extends StringGetter>> getStrings = new HashMap<>();
+    private static Map<String, Class<? extends ObjectGetter>> getObjects = new HashMap<>();
+    private static Map<String, Class<? extends StringGetter>> getStrings = new HashMap<>();
 
-    {
+    static {
         registerObjectGetter(ObjectGetterA.PREFIX, ObjectGetterA.class);
         
         registerStringGetter(StringGetterA.PREFIX, StringGetterA.class);
@@ -23,14 +23,11 @@ public class ParamsManager {
         registerStringGetter(StringGetterC.PREFIX, StringGetterC.class);
     }
 
-    public ParamsManager() {
-    }
-
-    public void registerObjectGetter(String prefix, Class<? extends ObjectGetter> objectGetterClass) {
+    public static void registerObjectGetter(String prefix, Class<? extends ObjectGetter> objectGetterClass) {
         getObjects.put(prefix, objectGetterClass);
     }
 
-    public void registerStringGetter(String prefix, Class<? extends StringGetter> formatClass) {
+    public static void registerStringGetter(String prefix, Class<? extends StringGetter> formatClass) {
         getStrings.put(prefix, formatClass);
     }
 

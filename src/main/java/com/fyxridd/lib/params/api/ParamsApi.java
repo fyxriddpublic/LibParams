@@ -55,8 +55,8 @@ public class ParamsApi {
     }
     
     /**
-     * @param name 变量名
-     * @param value 变量定义字符串
+     * @param strName 变量名
+     * @param strValue 变量定义字符串
      * @return 不为null
      */
     public static StringGetter loadStringGetter(String strName, String strValue) throws Exception {

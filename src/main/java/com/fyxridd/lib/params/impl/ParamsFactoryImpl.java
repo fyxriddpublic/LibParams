@@ -1,26 +1,30 @@
 package com.fyxridd.lib.params.impl;
 
-import com.fyxridd.lib.params.api.ObjectGetters;
-import com.fyxridd.lib.params.api.ParamsFactory;
-import com.fyxridd.lib.params.api.StringGetters;
+import com.fyxridd.lib.params.api.*;
+
+import java.util.Map;
 
 public class ParamsFactoryImpl implements ParamsFactory{
-    private ObjectGetters objectGetters;
-    private StringGetters stringGetters;
-    
-    public ParamsFactoryImpl(ObjectGetters objectGetters, StringGetters stringGetters) {
-        super();
-        this.objectGetters = objectGetters;
-        this.stringGetters = stringGetters;
+    private Map<String, ObjectGetter> objs;
+    private Map<String, StringGetter> strs;
+
+    public ParamsFactoryImpl(Map<String, ObjectGetter> objs, Map<String, StringGetter> strs) {
+        this.objs = objs;
+        this.strs = strs;
     }
 
     @Override
-    public ObjectGetters produceObjectGetters() {
-        return objectGetters.clone();
+    public ObjectGetter getObjGetter(String objName) {
+        return objs.get(objName);
     }
 
     @Override
-    public StringGetters produceStringGetters() {
-        return stringGetters.clone();
+    public StringGetter getStrGetter(String strName) {
+        return strs.get(strName);
+    }
+
+    @Override
+    public Session openSession(Map<String, Object> objDefaults, Map<String, String> strDefaults, String[] extra) {
+        return new Session(this, objDefaults, strDefaults, extra);
     }
 }

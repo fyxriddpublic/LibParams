@@ -1,9 +1,7 @@
 package com.fyxridd.lib.params.getter.str;
 
-import com.fyxridd.lib.params.api.ObjectGetters;
-import com.fyxridd.lib.params.api.StringGetter;
-import com.fyxridd.lib.params.api.ParamsApi;
-import com.fyxridd.lib.params.api.StringGetters;
+import com.fyxridd.lib.core.api.UtilApi;
+import com.fyxridd.lib.params.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +56,24 @@ public class StringGetterA extends StringGetter{
     }
 
     @Override
-    public String get(ObjectGetters objectGetters, StringGetters stringGetters, String[] extra) {
-        Object o = objectGetters.get(stringGetters, getObjName, extra);
-        if (property) {
-            
-        }else {
-            
+    public String get(Session session) {
+        try {
+            Object o = session.getObj(getObjName);
+            if (o != null) {
+                Object result;
+                if (property) {
+                    result = UtilApi.getField(o.getClass().getDeclaredField(proName), o);
+                }else {
+                    String[] proArgs = new String[proMethodParams.size()];
+                    for (int index=0;index<proArgs.length;index++) proArgs[index] = session.getStr(proMethodParams.get(index));
+                    result = UtilApi.getMethod(o.getClass().getDeclaredMethod(proName, proMethodClasses), proArgs);
+                }
+                if (result != null) return result.toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     public boolean isProperty() {
@@ -81,11 +90,5 @@ public class StringGetterA extends StringGetter{
 
     public Class<?>[] getProMethodClasses() {
         return proMethodClasses;
-    }
-
-    @Override
-    public StringGetter clone() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

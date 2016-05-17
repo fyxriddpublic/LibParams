@@ -2,9 +2,8 @@ package com.fyxridd.lib.params.getter.obj;
 
 import com.fyxridd.lib.params.ParamsPlugin;
 import com.fyxridd.lib.params.api.ObjectGetter;
-import com.fyxridd.lib.params.api.ObjectGetters;
 import com.fyxridd.lib.params.api.ParamsApi;
-import com.fyxridd.lib.params.api.StringGetters;
+import com.fyxridd.lib.params.api.Session;
 
 import java.util.List;
 
@@ -44,8 +43,8 @@ public class ObjectGetterA extends ObjectGetter{
     }
 
     @Override
-    public Object get(ObjectGetters objectGetters, StringGetters stringGetters, String[] extra) {
-        return ParamsPlugin.instance.getObjectGetterAManager().getValue(this, objectGetters, stringGetters, extra);
+    public Object get(Session session) {
+        return ParamsPlugin.instance.getObjectGetterAManager().getValue(session, this);
     }
 
     public String getPlugin() {
@@ -58,10 +57,5 @@ public class ObjectGetterA extends ObjectGetter{
 
     public List<String> getGetParams() {
         return getParams;
-    }
-
-    @Override
-    public ObjectGetter clone() {
-        return null;
     }
 }

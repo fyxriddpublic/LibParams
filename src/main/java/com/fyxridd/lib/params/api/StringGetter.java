@@ -1,19 +1,15 @@
 package com.fyxridd.lib.params.api;
 
-public abstract class StringGetter implements Cloneable{
-    protected String value;
+public abstract class StringGetter{
+    private String value;
 
     public StringGetter(String value) throws Exception{
         this.value = value;
     }
 
-    /**
-     * 转换格式
-     * @param getter 变量获取器
-     * @param extra 额外变量
-     * @return 转换后的值
-     */
-    public abstract String get(ObjectGetters objectGetters, StringGetters stringGetters, String[] extra);
+    public abstract String get(Session session);
 
-    public abstract StringGetter clone();
+    public String getValue() {
+        return value;
+    }
 }
