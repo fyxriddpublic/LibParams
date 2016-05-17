@@ -1,5 +1,8 @@
 package com.fyxridd.lib.params;
 
+import com.fyxridd.lib.params.getter.obj.ObjectGetter;
+import com.fyxridd.lib.params.getter.str.StringGetter;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

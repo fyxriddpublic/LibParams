@@ -1,7 +1,7 @@
 package com.fyxridd.lib.params.api;
 
 /**
- * 获取器
+ * 对象获取器
  */
 public interface Getter {
     /**

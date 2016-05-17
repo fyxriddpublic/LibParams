@@ -2,7 +2,6 @@ package com.fyxridd.lib.params.getter.obj;
 
 import com.fyxridd.lib.params.ParamsPlugin;
 import com.fyxridd.lib.params.Util;
-import com.fyxridd.lib.params.ObjectGetter;
 import com.fyxridd.lib.params.api.Session;
 
 import java.util.List;

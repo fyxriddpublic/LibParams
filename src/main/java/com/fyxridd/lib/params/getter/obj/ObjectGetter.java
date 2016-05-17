@@ -1,4 +1,4 @@
-package com.fyxridd.lib.params;
+package com.fyxridd.lib.params.getter.obj;
 
 import com.fyxridd.lib.params.api.Session;
 

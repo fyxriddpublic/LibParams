@@ -1,8 +1,8 @@
 package com.fyxridd.lib.params.api;
 
 import com.fyxridd.lib.config.api.convert.ConfigConvert;
-import com.fyxridd.lib.params.ObjectGetter;
-import com.fyxridd.lib.params.StringGetter;
+import com.fyxridd.lib.params.getter.obj.ObjectGetter;
+import com.fyxridd.lib.params.getter.str.StringGetter;
 import com.fyxridd.lib.params.Util;
 import com.fyxridd.lib.params.impl.ParamsFactoryImpl;
 import org.bukkit.configuration.ConfigurationSection;

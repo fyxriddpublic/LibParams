@@ -1,7 +1,7 @@
 package com.fyxridd.lib.params.manager;
 
-import com.fyxridd.lib.params.StringGetter;
-import com.fyxridd.lib.params.ObjectGetter;
+import com.fyxridd.lib.params.getter.str.StringGetter;
+import com.fyxridd.lib.params.getter.obj.ObjectGetter;
 import com.fyxridd.lib.params.getter.obj.ObjectGetterA;
 import com.fyxridd.lib.params.getter.str.StringGetterA;
 import com.fyxridd.lib.params.getter.str.StringGetterB;
