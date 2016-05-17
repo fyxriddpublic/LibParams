@@ -1,7 +1,11 @@
 package com.fyxridd.lib.params.api;
 
-public interface Format {
-    String getPrefix();
+public abstract class Format {
+    protected String value;
+
+    public Format(String value) {
+        this.value = value;
+    }
 
     /**
      * 转换格式
@@ -9,5 +13,5 @@ public interface Format {
      * @param extra 额外变量
      * @return 转换后的值
      */
-    String convert(String value, ValueGetter getter, String[] extra);
+    public abstract String convert(ValueGetter getter, String[] extra);
 }

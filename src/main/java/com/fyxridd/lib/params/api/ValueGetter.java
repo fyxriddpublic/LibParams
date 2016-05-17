@@ -10,5 +10,5 @@ public interface ValueGetter {
      * @param name 变量名
      * @return 可为null
      */
-    String getValue(String name);
+    String getValue(String name, String[] extra);
 }

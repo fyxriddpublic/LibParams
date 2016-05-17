@@ -6,17 +6,21 @@ import com.fyxridd.lib.params.api.Format;
 import com.fyxridd.lib.params.api.ParamsApi;
 import com.fyxridd.lib.params.api.ValueGetter;
 
-public class FormatB implements Format{
-    private static final String PREFIX = "b";
-    
-    @Override
-    public String getPrefix() {
-        return PREFIX;
+/**
+ * 直接设置值,可包含变量
+ */
+public class FormatB extends Format{
+    public static final String PREFIX = "b";
+
+    private Set<String> params;
+
+    public FormatB(String value) {
+        super(value);
+        params = ParamsApi.getParams(value);
     }
 
     @Override
-    public String convert(String value, ValueGetter getter, String[] extra) {
-        Set<String> params = ParamsApi.getParams(value);
+    public String convert(ValueGetter getter, String[] extra) {
         if (params != null) {
             for (String param:params) {
                 if (getter.hasValue(param)) {

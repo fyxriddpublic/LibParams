@@ -18,11 +18,8 @@
 ###      格式      ###
 ######################
 #以a开头代表从插件中获取值
-#插件名:获取名([{param1},...]):<属性/方法([{param1},...])>
+#插件名:获取名([{param1},...]):[属性/方法([{param1},...])]
 a1: "LibCore:getLowerName({name}):toString()"
-  #方法1代表从插件中获取值
-  method: 1
-  value: "LibCore:getLowerName({name}):toString()"
 
 #以b开头代表直接设置值,可包含变量
 #如果某个变量名不存在,则会原样保留
