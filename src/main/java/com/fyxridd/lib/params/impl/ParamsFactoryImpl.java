@@ -15,12 +15,16 @@ public class ParamsFactoryImpl implements ParamsFactory{
         this.strs = strs;
     }
 
-    @Override
+    /**
+     * @return 不存在返回null
+     */
     public ObjectGetter getObjGetter(String objName) {
         return objs.get(objName);
     }
 
-    @Override
+    /**
+     * @return 不存在返回null
+     */
     public StringGetter getStrGetter(String strName) {
         return strs.get(strName);
     }

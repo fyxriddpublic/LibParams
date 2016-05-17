@@ -39,7 +39,7 @@ public class SessionImpl implements Session{
         if (result != null) return result;
 
         //再获取
-        StringGetter getter = factory.getStrGetter(strName);
+        StringGetter getter = ((ParamsFactoryImpl)factory).getStrGetter(strName);
         if (getter == null) return null;
 
         //添加缓存
@@ -60,7 +60,7 @@ public class SessionImpl implements Session{
         if (result != null) return result;
 
         //再获取
-        ObjectGetter getter = factory.getObjGetter(objName);
+        ObjectGetter getter = ((ParamsFactoryImpl)factory).getObjGetter(objName);
         if (getter == null) return null;
 
         //添加缓存

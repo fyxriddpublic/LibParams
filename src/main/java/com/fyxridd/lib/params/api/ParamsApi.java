@@ -1,7 +1,6 @@
 package com.fyxridd.lib.params.api;
 
 import com.fyxridd.lib.params.ParamsPlugin;
-import com.fyxridd.lib.params.getter.obj.ObjectGetterAManager.Getter;
 
 public class ParamsApi {
     /**

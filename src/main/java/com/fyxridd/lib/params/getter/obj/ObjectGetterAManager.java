@@ -1,23 +1,12 @@
 package com.fyxridd.lib.params.getter.obj;
 
-import com.fyxridd.lib.params.api.ParamsApi;
+import com.fyxridd.lib.params.api.Getter;
 import com.fyxridd.lib.params.api.Session;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ObjectGetterAManager {
-    /**
-     * 获取器
-     */
-    public interface Getter {
-        /**
-         * 获取值
-         * @param args 传入的字符串变量列表
-         */
-        Object get(String... args);
-    }
-    
     //插件名 获取名 获取器
     private Map<String, Map<String, Getter>> map = new HashMap<>();
 
