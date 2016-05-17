@@ -1,44 +1,56 @@
 package com.fyxridd.lib.params.manager;
 
-import com.fyxridd.lib.params.ParamsPlugin;
-import com.fyxridd.lib.params.api.Format;
-import com.fyxridd.lib.params.formats.FormatA;
-import com.fyxridd.lib.params.formats.FormatB;
-import com.fyxridd.lib.params.formats.FormatC;
+import com.fyxridd.lib.params.api.StringGetter;
+import com.fyxridd.lib.params.api.ObjectGetter;
+import com.fyxridd.lib.params.api.ParamsApi;
+import com.fyxridd.lib.params.getter.obj.ObjectGetterA;
+import com.fyxridd.lib.params.getter.str.StringGetterA;
+import com.fyxridd.lib.params.getter.str.StringGetterB;
+import com.fyxridd.lib.params.getter.str.StringGetterC;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParamsManager {
-    private Map<String, Class<? extends Format>> formats = new HashMap<>();
+    private Map<String, Class<? extends ObjectGetter>> getObjects = new HashMap<>();
+    private Map<String, Class<? extends StringGetter>> getStrings = new HashMap<>();
 
     {
-        register(FormatA.PREFIX, FormatA.class);
-        register(FormatB.PREFIX, FormatB.class);
-        register(FormatC.PREFIX, FormatC.class);
+        registerObjectGetter(ObjectGetterA.PREFIX, ObjectGetterA.class);
+        
+        registerStringGetter(StringGetterA.PREFIX, StringGetterA.class);
+        registerStringGetter(StringGetterB.PREFIX, StringGetterB.class);
+        registerStringGetter(StringGetterC.PREFIX, StringGetterC.class);
     }
 
     public ParamsManager() {
     }
 
-    public void register(String prefix, Class<? extends Format> formatClass) {
-        formats.put(prefix, formatClass);
+    public void registerObjectGetter(String prefix, Class<? extends ObjectGetter> objectGetterClass) {
+        getObjects.put(prefix, objectGetterClass);
+    }
+
+    public void registerStringGetter(String prefix, Class<? extends StringGetter> formatClass) {
+        getStrings.put(prefix, formatClass);
     }
 
     /**
-     * @see com.fyxridd.lib.params.api.ParamsApi#loadFormat(String, String)
+     * @see ParamsApi#loadObjectGetter(String, String)
      */
-    public Format loadFormat(String name, String value) {
-        for (Map.Entry<String, Class<? extends Format>> entry:formats.entrySet()) {
-            if (name.startsWith(entry.getKey())) {
-                try {
-                    return entry.getValue().getConstructor(String.class).newInstance(value);
-                } catch (Exception e) {
-                    return null;
-                }
-            }
+    public ObjectGetter loadObjectGetter(String objName, String objValue) throws Exception{
+        for (Map.Entry<String, Class<? extends ObjectGetter>> entry:getObjects.entrySet()) {
+            if (objName.startsWith(entry.getKey())) return entry.getValue().getConstructor(String.class).newInstance(objValue);
         }
-        return null;
+        throw new Exception("objName has no match prefix!");
+    }
+
+    /**
+     * @see com.fyxridd.lib.params.api.ParamsApi#loadStringGetter(String, String)
+     */
+    public StringGetter loadStringGetter(String strName, String strValue) throws Exception{
+        for (Map.Entry<String, Class<? extends StringGetter>> entry:getStrings.entrySet()) {
+            if (strName.startsWith(entry.getKey())) return entry.getValue().getConstructor(String.class).newInstance(strValue);
+        }
+        throw new Exception("strName has no match prefix!");
     }
 }

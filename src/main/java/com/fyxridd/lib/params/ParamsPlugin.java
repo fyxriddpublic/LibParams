@@ -1,7 +1,6 @@
 package com.fyxridd.lib.params;
 
-import com.fyxridd.lib.params.formats.FormatAManager;
-
+import com.fyxridd.lib.params.getter.obj.ObjectGetterAManager;
 import com.fyxridd.lib.core.api.plugin.SimplePlugin;
 import com.fyxridd.lib.params.manager.ParamsManager;
 
@@ -9,14 +8,14 @@ public class ParamsPlugin extends SimplePlugin{
     public static ParamsPlugin instance;
 
     private ParamsManager paramsManager;
-    private FormatAManager formatAManager;
+    private ObjectGetterAManager objectGetterAManager;
 
     @Override
     public void onEnable() {
         instance = this;
 
         paramsManager = new ParamsManager();
-        formatAManager = new FormatAManager();
+        objectGetterAManager = new ObjectGetterAManager();
 
         super.onEnable();
     }
@@ -25,7 +24,8 @@ public class ParamsPlugin extends SimplePlugin{
         return paramsManager;
     }
 
-    public FormatAManager getFormatAManager() {
-        return formatAManager;
+    public ObjectGetterAManager getObjectGetterAManager() {
+        return objectGetterAManager;
     }
+    
 }
