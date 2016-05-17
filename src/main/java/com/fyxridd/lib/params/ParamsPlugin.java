@@ -13,11 +13,6 @@ public class ParamsPlugin extends SimplePlugin{
 
     @Override
     public void onEnable() {
-        Bukkit.getScheduler().runTaskAsynchronously(this, new Runnable(){
-            public void run() {
-                
-            }
-        }).;
         instance = this;
 
         paramsManager = new ParamsManager();
