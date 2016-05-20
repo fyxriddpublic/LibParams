@@ -2,7 +2,7 @@ package com.fyxridd.lib.params.getter.str;
 
 import java.util.Set;
 
-import com.fyxridd.lib.params.Util;
+import com.fyxridd.lib.core.api.UtilApi;
 import com.fyxridd.lib.params.api.Session;
 
 /**
@@ -15,7 +15,7 @@ public class StringGetterB extends StringGetter{
 
     public StringGetterB(String value) throws Exception {
         super(value);
-        params = Util.getParams(value);
+        params = UtilApi.getParams(value);
     }
 
     @Override

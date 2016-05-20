@@ -25,8 +25,8 @@ public class SessionImpl implements Session{
 
     public SessionImpl(ParamsFactory factory, Map<String, Object> objDefaults, Map<String, String> strDefaults, String[] extra) {
         this.factory = factory;
-        this.objCache.putAll(objDefaults);
-        this.strCache.putAll(strDefaults);
+        if (objDefaults != null) this.objCache.putAll(objDefaults);
+        if (strDefaults != null) this.strCache.putAll(strDefaults);
         this.extra = extra;
     }
 
