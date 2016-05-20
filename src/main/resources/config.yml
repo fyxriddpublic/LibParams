@@ -22,10 +22,10 @@ params:
   #获取对象列表(以Obj来标记)
   #(在程序中的返回结果是一个Object)
   getObjects:
-    #以a开头代表从插件中获取对象
+    #以o开头代表从插件中获取对象
     #插件名:获取名([{str1},...])
     #获取名的方法中传入的变量都是Str
-    a1: "LibCore:getLowerName({name})"
+    o1: "LibCore:getLowerName({name})"
   #获取字符串列表(以Str来标记)
   #(在程序中的返回结果是一个String)
   getStrings:

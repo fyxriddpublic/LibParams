@@ -10,7 +10,7 @@ import java.util.List;
  * 从插件中获取对象
  */
 public class ObjectGetterA extends ObjectGetter{
-    public static final String PREFIX = "a";
+    public static final String PREFIX = "o";
 
     //插件名
     private String plugin;
