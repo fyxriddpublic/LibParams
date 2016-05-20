@@ -1,7 +1,5 @@
 package com.fyxridd.lib.params.api;
 
-import java.util.Collection;
-
 /**
  * 会话
  */

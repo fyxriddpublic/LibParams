@@ -4,6 +4,7 @@ import com.fyxridd.lib.params.getter.obj.ObjectGetter;
 import com.fyxridd.lib.params.getter.str.StringGetter;
 import com.fyxridd.lib.params.api.*;
 
+import java.util.Collection;
 import java.util.Map;
 
 public class ParamsFactoryImpl implements ParamsFactory{
@@ -32,5 +33,10 @@ public class ParamsFactoryImpl implements ParamsFactory{
     @Override
     public Session openSession(Map<String, Object> objDefaults, Map<String, String> strDefaults, String[] extra) {
         return new SessionImpl(this, objDefaults, strDefaults, extra);
+    }
+
+    @Override
+    public Collection<String> getStrNames() {
+        return strs.keySet();
     }
 }

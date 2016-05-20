@@ -15,7 +15,7 @@ public interface ParamsFactory {
     Session openSession(Map<String, Object> objDefaults, Map<String, String> strDefaults, String[] extra);
 
     /**
-     * 获取所有的str变量的名(不包括程序自定义传入的Str变量名)
+     * 获取所有的str变量的名字(不包括程序自定义传入的Str变量名)
      */
     Collection<String> getStrNames();
 }
