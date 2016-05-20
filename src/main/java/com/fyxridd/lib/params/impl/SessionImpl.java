@@ -5,6 +5,7 @@ import com.fyxridd.lib.params.getter.str.StringGetter;
 import com.fyxridd.lib.params.api.ParamsFactory;
 import com.fyxridd.lib.params.api.Session;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,5 +74,10 @@ public class SessionImpl implements Session{
 
     public String[] getExtra() {
         return extra;
+    }
+
+    @Override
+    public Collection<String> getStrNames() {
+        return strCache.keySet();
     }
 }
