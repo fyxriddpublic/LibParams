@@ -5,7 +5,7 @@ package com.fyxridd.lib.params.api;
  */
 public interface Getter {
     /**
-     * 获取值
+     * 获取对象
      * @param args 传入的字符串变量列表
      */
     Object get(String... args);
