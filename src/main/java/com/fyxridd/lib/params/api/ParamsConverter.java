@@ -15,7 +15,7 @@ public class ParamsConverter implements ConfigConvert.ConfigConverter<ParamsFact
     public ParamsFactory convert(String plugin, ConfigurationSection config) throws Exception {
         Map<String, ObjectGetter> objs = new HashMap<>();
         //获取对象列表
-        {
+        if (config != null) {
             ConfigurationSection getObjectsConfig = config.getConfigurationSection("getObjects");
             if (getObjectsConfig != null) {
                 for (String objName:getObjectsConfig.getValues(false).keySet()) {
@@ -30,7 +30,7 @@ public class ParamsConverter implements ConfigConvert.ConfigConverter<ParamsFact
 
         Map<String, StringGetter> strs = new HashMap<>();
         //获取字符串列表
-        {
+        if (config != null) {
             ConfigurationSection getStringsConfig = config.getConfigurationSection("getStrings");
             for (String strName:getStringsConfig.getValues(false).keySet()) {
                 try {
